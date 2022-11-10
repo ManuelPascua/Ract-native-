@@ -7,8 +7,29 @@ class Login extends Component{
     constructor(){
         super()
         this.state = {
+            email:"",
+            password:"",
+            e:""
 
         }
+    }
+
+    componentDidMount(){
+        auth.onAuthStateChanged(user=> {
+            if(user){
+                this.props.navigation.navigate('HomeMenu')
+            }})
+
+            
+        
+    }
+
+    loginUser(email, password){
+        auth.signInWithEmailAndPassword(email, password)
+            .then( res => {
+                this.props.navigation.navigate('HomeMenu')
+            })
+            .catch(e => console.log(e))
     }
     
 
@@ -18,8 +39,23 @@ class Login extends Component{
             <View> 
                 <Text>Login</Text>
                 <View>
-                   <Text>Email</Text>
-                   <Text>Password</Text>
+                   
+                    <TextInput  
+                       placeholder='email'
+                       keyboardType='email-address'
+                       onChangeText={ text => this.setState({email:text}) }
+                       value={this.state.email}
+                    /> 
+                    <TextInput  
+                        placeholder='password'
+                        keyboardType='default'
+                        onChangeText={ text => this.setState({password:text}) }
+                        value={this.state.pass}
+                    /> 
+                    <TouchableOpacity onPress={()=>this.loginUser(this.state.email, this.state.password)}>
+                        <Text>Ingresar</Text>
+                    </TouchableOpacity>
+                    <Text onPress={ () => this.props.navigation.navigate('Register')} >Ir a Registro</Text> 
                    
                 </View>
             </View>
