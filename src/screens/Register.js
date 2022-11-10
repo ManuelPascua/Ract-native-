@@ -56,7 +56,7 @@ class Register extends Component{
                         className='input' 
                         placeholder='password'
                         keyboardType='default'
-                        onChangeText={ text => this.setState({pass:text}) }
+                        onChangeText={ text => this.setState({password:text}) }
                         value={this.state.pass}
                     /> 
                     <TextInput 
