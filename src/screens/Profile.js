@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {auth} from '../firebase/config';
-import { View,Text,TextInput,TouchableOpacity,StyleSheet } from 'react-native';
+import { View,Text,TouchableOpacity,StyleSheet } from 'react-native';
 
 
 class Profile extends Component{
