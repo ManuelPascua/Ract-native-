@@ -58,6 +58,7 @@ class Register extends Component{
                         keyboardType='default'
                         onChangeText={ text => this.setState({password:text}) }
                         value={this.state.pass}
+                        secureTextEntry = {true}
                     /> 
                     <TextInput 
                         className='input' 

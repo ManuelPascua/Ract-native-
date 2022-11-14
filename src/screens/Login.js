@@ -54,6 +54,7 @@ class Login extends Component{
                         keyboardType='default'
                         onChangeText={ text => this.setState({password:text}) }
                         value={this.state.pass}
+                        secureTextEntry = {true}
                     /> 
                     <TouchableOpacity onPress={()=>this.loginUser(this.state.email, this.state.password)}>
                         <Text>Ingresar</Text>
