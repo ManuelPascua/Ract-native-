@@ -9,13 +9,14 @@ class Post extends Component{
         super(props)
         this.state={
             myLike: false,
-            likesAmount:this.props.postData.data.likes.length
+            likesAmount:this.props.info.data.likes.length
             
             
         }
     }
+    
     componentDidMount(){
-        if(this.props.postData.data.likes.includes(auth.currentUser.email)){
+        if(this.props.info.data.likes.includes(auth.currentUser.email)){
             this.setState({
                 myLike: true
                 
@@ -24,8 +25,8 @@ class Post extends Component{
     }
 
     like(){
-        db.collection('posts')
-            .doc(this.props.postData.id) 
+        db.collection('post')
+            .doc(this.props.info.id) 
             .update({
                 likes: firebase.firestore.FieldValue.arrayUnion(auth.currentUser.email) 
             })
@@ -39,8 +40,8 @@ class Post extends Component{
     }
 
     unLike(){
-        db.collection('posts')
-            .doc(this.props.postData.id) 
+        db.collection('post')
+            .doc(this.props.info.id) 
             .update({
                 likes: firebase.firestore.FieldValue.arrayRemove(auth.currentUser.email) 
             })
@@ -56,9 +57,10 @@ class Post extends Component{
     render(){
         return(
             <View>
-                <Text>{this.props.postData.data.textoPost}</Text>
+                <Text>{this.props.info.data.owner}</Text>
+                <Text>{this.props.info.data.textoPost}</Text>
                 <Text>Cantidad de likes: {this.state.likesAmount}</Text>
-                
+
                 { this.state.myLike ? 
                     <TouchableOpacity onPress={ ()=> this.unLike() }>
                         <Text>No me gusta más</Text>
@@ -68,7 +70,12 @@ class Post extends Component{
                         <Text>Me gusta</Text>
                     </TouchableOpacity>
                 }
+                <TouchableOpacity onPress={() => this.props.navigation.navigate('Comments', {id: this.props.info.id})}>
+                    <Text>Comentar</Text>
+                </TouchableOpacity>
             </View>
         )
     }
 }
+
+export default Post

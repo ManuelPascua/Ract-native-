@@ -16,6 +16,7 @@ class Newposte extends Component{
         db.collection('post').add({
             owner: auth.currentUser.email,
             textoPost: texto,
+            comentarios: [],
             likes:[],
             createdAt: Date.now()
         })

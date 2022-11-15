@@ -11,12 +11,29 @@ function HomeMenu(){
 
     return (
         <Tab.Navigator>
-            <Tab.Screen name="Home" component={ Home } />
-            <Tab.Screen name="NewPost" component={ NewPost } />
-            <Tab.Screen name="Profile" component={ Profile } />
+
+            <Tab.Screen 
+                name="Home" 
+                component={ Home } 
+                options={ { headerShown: false } } 
+            />
+
+            <Tab.Screen
+                name="NewPost" 
+                component={ NewPost } 
+                options={ { headerShown: false } } 
+            />
+
+            <Tab.Screen 
+                name="Profile" 
+                component={ Profile }
+                options={ { headerShown: false } }                 
+            />
+
         </Tab.Navigator>
     )
 
 }
+
 
 export default HomeMenu;

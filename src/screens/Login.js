@@ -41,7 +41,7 @@ class Login extends Component{
         return(
             <View> 
                 <Text>Login</Text>
-                <View>
+                <View >
                    
                     <TextInput  
                        placeholder='email'
@@ -66,4 +66,13 @@ class Login extends Component{
         )
     }
 }    
+const styles = StyleSheet.create({
+    
+    
+
+
+    
+
+})
+
 export default Login
