@@ -14,7 +14,7 @@ class Home extends Component{
         }
     }
     componentDidMount(){
-        db.collection('post').onSnapshot(
+        db.collection('post').orderBy('createdAt','desc').onSnapshot(
 
             docs=>{
                 
@@ -38,7 +38,7 @@ class Home extends Component{
         return(
 
             <View style={styles.flatlist}>
-                <Text> Tu Feed </Text>
+                <Text style={styles.titel}> Tu Feed </Text>
                 <FlatList
                     style={styles.flatlist}
                     data={ this.state.posteos }
@@ -60,8 +60,16 @@ const styles = StyleSheet.create({
 
     flatlist: { 
         width: '100%',
-        flex: 1
+        flex: 1,
+        backgroundColor: 'rgb(25, 20, 20 )',
+        textAlign:'center',
     },
+    titel:{
+        color:'rgb(189, 193, 198)',
+        with:'100%',
+        
+        
+    }
 
 
 })

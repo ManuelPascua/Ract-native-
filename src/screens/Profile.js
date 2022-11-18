@@ -34,6 +34,8 @@ class Profile extends Component{
         )
     } 
 
+
+
     singOut(){
         auth.signOut()
             .then(() => {            
@@ -42,12 +44,14 @@ class Profile extends Component{
     }
     render(){
         return(
-            <View> 
-                <Text>Profile</Text>
-                <TouchableOpacity onPress={()=>this.singOut()} >Log Out</TouchableOpacity>
+            <View style={styles.container}> 
+                <View>
+                    <Text>Profile</Text>
+                    <TouchableOpacity onPress={()=>this.singOut()} ><Text>Log Out</Text></TouchableOpacity>
+                </View>    
                 <FlatList
                     style={styles.flatlist}
-                    data={ this.state.misPosteos }
+                    data={ this.state.misPosteos}
                     keyExtractor={ item => item.id.toString() }
                     renderItem={ ({item}) => <Post info={item}/> }
                 />
@@ -59,6 +63,10 @@ class Profile extends Component{
 const styles = StyleSheet.create({
 
 
+    container:{
+        backgroundColor: 'rgb(25, 20, 20 )',
+        height:'100%'
+    },
     flatlist: { 
         width: '100%',
         flex: 1
